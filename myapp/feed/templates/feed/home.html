@@ -1,0 +1,57 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="jumbotron">
+      <canvas id="myChart" style="max-width: 500px;"></canvas>
+
+      <h1>Male Count: {{male_count}}</h1>
+      <h1>Female Count: {{female_count}}</h1>
+      <h1>Other Count: {{other_count}}</h1>
+      All Users:
+        <div class="card">
+          <div class="row">
+            {% for id in user_ids %}
+              <div class="col-md-3">
+                <h5>{{id}}</h5>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+  </div>
+  <script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Male", "Female", "Other"],
+      datasets: [{
+        label: '# of Votes',
+        data: [{}, {}, {}],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+
+        ],
+        borderColor: [
+          'rgba(54, 162, 235, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(255, 206, 86, 1)',
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+</script>
+{% endblock content %}
