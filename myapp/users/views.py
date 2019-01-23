@@ -4,6 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile
+from django.contrib.auth.models import User
+from rest_framework import generics, viewsets
+
+from . import models
+from . import serializers
+
+class UserListView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
 
 # Create your views here.
 def register(request):

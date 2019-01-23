@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Demographics
 import json
+from users.models import Profile
+from rest_framework import generics, viewsets, permissions
+from . import models
+from . import serializers
 
 # Create your views here.
 
@@ -20,12 +24,18 @@ def demographics_context():
     }
     return context
 
-
 def home(request):
     context = demographics_context()
     return render(request, 'feed/home.html', context)
 
-# def base(request)
 def view_demographics(request):
     response = json.dumps([demographics_context()])
     return HttpResponse(response, content_type='text/json')
+
+class UserListView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+
+class ProfileView(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = serializers.ProfileSerializer
