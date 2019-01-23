@@ -2,8 +2,6 @@
 {% block content %}
   <div class="container">
     <div class="jumbotron">
-      <canvas id="myChart" style="max-width: 500px;"></canvas>
-
       <h1>Male Count: {{male_count}}</h1>
       <h1>Female Count: {{female_count}}</h1>
       <h1>Other Count: {{other_count}}</h1>
@@ -17,6 +15,7 @@
             {% endfor %}
           </div>
         </div>
+        <canvas id="myChart" style="max-width: 500px;"></canvas>
     </div>
   </div>
   <script>
