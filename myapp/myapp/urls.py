@@ -31,7 +31,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name="logout"),
     path('profile/', user_views.profile, name='profile'),
     path('demographics', feed_views.view_demographics, name='demographics-api'),
-    path('api/v1/', include('feed.urls'), name='api-path'),
+    path('api/v1/', include('feed.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/token/refresh/', TokenRefreshView.as_view()),
 ]

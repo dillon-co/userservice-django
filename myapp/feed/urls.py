@@ -11,6 +11,6 @@ urlpatterns = [
     # path('users/', include('users.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('', include(router.urls)),
-    
+
     # path('', user_views.UserListView)
 ]
